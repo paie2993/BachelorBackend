@@ -7,7 +7,7 @@ from nltk.tokenize import RegexpTokenizer
 
 class Tokenizer:
     _tokenizer = RegexpTokenizer(
-        r'\w+|(?:\'?(?:\w+\'?)+#\'?(?:\w+\'?)+)+|[][)(}{\'\-.,!?:;"*$&]+'
+        r'(?:\'?(?:\w+\'?)+#\'?(?:\w+\'?)+)+|[][)(}{\'\-.,!?:;"*$&]+|\w+'
     )  # simple words | hyphened words | punctuation characters
     _expander = Expander()
 
@@ -37,10 +37,6 @@ class Tokenizer:
 
         # unmark hyphened words
         tokens = list(map(self.unmark_hyphened_word, tokens))
-
-        # uppercase the I
-
-        # remove the "'"
 
         return tokens
 
